@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Notifications</string>
+    <string name="show_notification_txt">Show Notification</string>
+    <string name="notification_title">This is my notification</string>
+    <string name="notification_content_txt">I am just trying to create a notification here, please!!</string>
+    <string name="notification_big_txt">Yes this notification text will be the big one!!</string>
+    <string name="notification_channel_name">Notification Channel Name</string>
+    <string name="notifiation_description_txt">Notification Description</string>
+    <string name="notify_me_btn_txt">Notify Me!!</string>
+    <string name="update_me_btn_txt">Update Me!</string>
+    <string name="notificaton_updated_txt">Notification Updated!!</string>
+</resources>

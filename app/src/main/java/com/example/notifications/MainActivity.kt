@@ -32,8 +32,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        //Register notification receiver to activity to receive notification events
         registerReceiver(notificationReciever, IntentFilter(ACTION_UPDATE_NOTIFICATION))
         registerReceiver(notificationDeleteReciever, IntentFilter(ACTION_DELETE_NOTIFICATION))
+
+
         setNotificationsState(true, false, false)
     }
 
@@ -44,6 +48,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //create notification builder to handle notification UI
     fun getNotificationBuilder(): NotificationCompat.Builder {
         return with(NotificationCompat.Builder(this, "101")) {
             setSmallIcon(android.R.drawable.ic_notification_clear_all)
@@ -59,7 +64,9 @@ class MainActivity : AppCompatActivity() {
     }
 
 
+    //show notification
         fun showNotification(view: View) {
+        //configure pending intents to be triggered on notification actions
             val updateIntent  = Intent(ACTION_UPDATE_NOTIFICATION)
             val updatePendingIntent = PendingIntent.getBroadcast(this, notification_Id, updateIntent, PendingIntent.FLAG_ONE_SHOT)
 
@@ -113,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
+//update notification
         fun updateNotification(view: View) {
             val notificationImage  = BitmapFactory.decodeResource(resources, R.drawable.mascot_1)
             notificationCompatBuilder.setStyle(NotificationCompat.BigPictureStyle().bigPicture(notificationImage).setBigContentTitle(getString(
@@ -142,10 +149,10 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
+//inner broadcast class to receive broadcasts from notification
     inner class NotificationReceiver: BroadcastReceiver() {
 
-
+    //act based on broadcast action received
         override fun onReceive(context: Context?, intent: Intent?) {
             val action = intent?.action
             if (action.equals(ACTION_UPDATE_NOTIFICATION)){
